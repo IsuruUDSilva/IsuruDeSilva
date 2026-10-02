@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'JetBrains Mono', monospace;
+  color: #c7e3cc;
+  background: #0a0f14;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(0, 229, 255, 0.09), transparent 40%),
+    radial-gradient(circle at 88% 22%, rgba(0, 255, 65, 0.08), transparent 36%),
+    linear-gradient(160deg, #06090d 0%, #0a0f14 45%, #0a1210 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(0, 255, 65, 0.25);
+  color: #e6f5e8;
+}
+
+.terminal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #1e2e3f transparent;
+}
+
+.terminal-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.terminal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: #1e2e3f;
+  border-radius: 4px;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: #2a4056;
+}
