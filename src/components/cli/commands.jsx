@@ -20,6 +20,7 @@ export const COMMANDS = [
   { name: 'contact', description: 'ways to reach me' },
   { name: 'social', description: 'github / linkedin' },
   { name: 'resume', description: 'download resume.pdf' },
+  { name: 'games', description: 'dev playground (snake, memory)' },
   { name: 'banner', description: 'show the ascii banner' },
   { name: 'clear', description: 'clear the terminal' },
 ]

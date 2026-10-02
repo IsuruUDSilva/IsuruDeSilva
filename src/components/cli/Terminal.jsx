@@ -10,7 +10,10 @@ import { runCommand, renderWelcome } from './commands'
 
 const PROMPT = 'isuru@portfolio:~$'
 
+const GAME_COMMANDS = ['games', 'snake', 'memory']
+
 const Terminal = forwardRef(function Terminal(_props, ref) {
+  const onOpenGame = _props.onOpenGame
   const [lines, setLines] = useState([])
   const [value, setValue] = useState('')
   const inputRef = useRef(null)
@@ -35,12 +38,19 @@ const Terminal = forwardRef(function Terminal(_props, ref) {
     if (!command) return
 
     const next = [{ id: nextId(), kind: 'input', text: command }]
+
+    if (GAME_COMMANDS.includes(command.toLowerCase())) {
+      setLines(next)
+      onOpenGame(command.toLowerCase())
+      return
+    }
+
     const content = runCommand(command)
     if (content) {
       next.push({ id: nextId(), kind: 'output', content })
     }
     setLines(next)
-  }, [])
+  }, [onOpenGame])
 
   useImperativeHandle(
     ref,
@@ -48,7 +58,7 @@ const Terminal = forwardRef(function Terminal(_props, ref) {
       run: (command) => {
         setValue('')
         execute(command)
-        inputRef.current?.focus()
+        if (!GAME_COMMANDS.includes(command.trim().toLowerCase())) inputRef.current?.focus()
       },
       focus: () => inputRef.current?.focus(),
     }),
